@@ -79,12 +79,6 @@ Notable artifacts included `SessionManagerBackup.reg`, `vbsstartup.vbs`, `jsesta
 
 Process relationships and command-line evidence were consistent with the authorized Atomic Red Team exercise.
 
-The investigation identified PowerShell and command-shell execution, registry modification through `reg.exe`, startup/persistence-related artifacts, remote-session telemetry, file activity, automated user containment, RDP disruption, and endpoint isolation.
-
-Notable artifacts included `SessionManagerBackup.reg`, `vbsstartup.vbs`, `jsestartup.jse`, and `uuid_injection.exe`.
-
-Process relationships and command-line evidence were consistent with the authorized Atomic Red Team exercise.
-
 
 ---
 
