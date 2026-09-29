@@ -22,6 +22,15 @@ The investigation focused on using the **Attack Story, process tree, Evidence an
 
 ---
 
+
+### Incident & Attack Story Evidence
+
+The Defender incident view correlated the simulated activity into a high-severity incident and provided the attack story used for initial triage.
+
+![Microsoft Defender XDR Incident and Attack Story](01-incident-attack-story%20(1).png)
+
+---
+
 ## Investigation Timeline
 
 | Time shown in Defender | Activity |
@@ -64,8 +73,42 @@ Notable artifacts included `SessionManagerBackup.reg`, `vbsstartup.vbs`, `jsesta
 
 Process relationships and command-line evidence were consistent with the authorized Atomic Red Team exercise.
 
----
+The investigation identified PowerShell and command-shell execution, registry modification through `reg.exe`, startup/persistence-related artifacts, remote-session telemetry, file activity, automated user containment, RDP disruption, and endpoint isolation.
 
+Notable artifacts included `SessionManagerBackup.reg`, `vbsstartup.vbs`, `jsestartup.jse`, and `uuid_injection.exe`.
+
+Process relationships and command-line evidence were consistent with the authorized Atomic Red Team exercise.
+
+### Process Tree Evidence
+
+The Defender process tree was used to identify parent-child process relationships and focus the investigation on relevant PowerShell, command-shell, and registry activity.
+
+![Defender XDR Process Tree](02-process-tree.png)
+
+### File and Registry Evidence
+
+Evidence and Response was reviewed for artifacts associated with the simulated activity, including registry-related files and command-line references.
+
+![Defender XDR File Evidence](05-file-evidence.png)
+
+
+### Remote Session Evidence
+
+Remote-session telemetry was reviewed during incident scoping. The initiating address was verified as belonging to the authorized lab environment. Sensitive addressing information has been sanitized for public portfolio use.
+
+![Sanitized Remote Session Evidence](03-remote-session-evidence-sanitized.png.png)
+
+The Defender process tree was used to identify parent-child process relationships and focus the investigation on relevant PowerShell, command-shell, and registry activity.
+
+![Defender XDR Process Tree](02-process-tree.png)
+
+### Attack Disruption Response
+
+Microsoft Defender XDR performed automated response actions against the attacker-like behavior generated during the simulation, including containment and endpoint isolation.
+
+![Defender XDR Attack Disruption](04-attack-disruption-response.png)
+
+---
 ## Advanced Hunting
 
 Advanced Hunting was used as a **targeted validation step** rather than reviewing every endpoint event individually.
@@ -84,6 +127,13 @@ DeviceProcessEvents
 ```
 
 The query helped validate relevant command lines, process relationships, execution context, and associated accounts.
+
+### Advanced Hunting Evidence
+
+The hunting results were used to validate the process and account relationships identified during the Defender investigation.
+
+![Advanced Hunting Validation](06-advanced-hunting-validation.png)
+
 
 ---
 
