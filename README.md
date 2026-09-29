@@ -9,7 +9,13 @@ The investigation focused on using the **Attack Story, process tree, Evidence an
 > **Lab Notice:** This was an authorized cybersecurity simulation conducted in a controlled lab environment. Sensitive usernames, device names, tenant/workspace identifiers, SIDs, and private IP addresses were sanitized before publication.
 
 ---
+## Investigation Summary
 
+On September 28, 2026, Microsoft Defender XDR generated a high-severity incident after detecting a series of suspicious activities on the lab endpoint. The incident correlated 16 alerts and 33 evidence objects involving PowerShell, `cmd.exe`, `reg.exe`, registry modifications, startup-related artifacts, remote-session activity, and automated attack disruption.
+
+Review of the Attack Story and process tree showed that the activity was consistent with an authorized Atomic Red Team simulation that included MITRE ATT&CK technique **T1547.001 – Registry Run Keys / Startup Folder**. Defender responded by containing the affected user, disrupting the RDP session, and isolating the endpoint.
+
+Advanced Hunting was then used to validate the key process relationships and command execution. Based on the evidence reviewed, the incident was classified as **True Positive – Authorized Security Simulation**, with no evidence supporting an unauthorized external compromise.
 ## Incident Summary
 
 - **Platform:** Microsoft Defender XDR
@@ -78,6 +84,9 @@ The investigation identified PowerShell and command-shell execution, registry mo
 Notable artifacts included `SessionManagerBackup.reg`, `vbsstartup.vbs`, `jsestartup.jse`, and `uuid_injection.exe`.
 
 Process relationships and command-line evidence were consistent with the authorized Atomic Red Team exercise.
+
+
+---
 
 ### Process Tree Evidence
 
